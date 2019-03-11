@@ -1,0 +1,60 @@
+<mat-card class="my-card">
+  <mat-card-header>
+    <mat-card-title>Sign Up</mat-card-title>
+  </mat-card-header>
+<mat-card-content>
+  <form [formGroup]="signupForm" (ngSubmit)="register(signupForm.value)" autocomplete="off" class="my-form">
+     <mat-form-field class="full-width">
+            <mat-label>First Name</mat-label>
+            <input  matInput  placeholder="First name" formControlName="firstname" name="firstname" required>
+            <mat-error *ngIf="firstname == null || firstname == '' || firstname.hasError('firstname', 'required')">
+              This is <strong>required</strong> field
+            </mat-error>
+         </mat-form-field>
+         <mat-form-field class="full-width">
+            <mat-label>Last Name</mat-label>
+            <input  matInput  placeholder="Last Name" formControlName="lastname" name="lastname" required>
+            <mat-error *ngIf="lastname == null || lastname == '' || lastname.hasError('lastname', 'required')">
+              This is <strong>required</strong> field
+            </mat-error>
+         </mat-form-field>
+         <mat-form-field class="full-width">
+            <mat-label>Email</mat-label>
+            <input  matInput placeholder="Email" formControlName="emailFormControl" name="emailFormControl" required>
+            <mat-error *ngIf="emailFormControl == null || emailFormControl == '' || emailFormControl.hasError('required')">
+              Email is <strong>required</strong> and should be a valid email.
+            </mat-error>
+            <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
+              Email is <strong>required</strong>
+            </mat-error> -->
+         </mat-form-field>
+         <mat-form-field class="full-width">
+            <mat-label>Password</mat-label>
+            <input  matInput  placeholder="Password" formControlName="password" type="password" name="password" required>
+            <mat-error *ngIf="password == null || password == '' || password.hasError('password', 'required')">
+              This is <strong>required</strong> field
+            </mat-error>
+         </mat-form-field>
+         <section class="example-section">
+          <label class="example-margin">Gender:</label>
+          <mat-radio-group formControlName="gender">
+            <mat-radio-button class="example-margin" value="male">Male</mat-radio-button>
+            <mat-radio-button class="example-margin" value="female">Female</mat-radio-button>
+          </mat-radio-group>
+        </section>
+     
+        <mat-form-field>
+          <mat-label>Date of Birth</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dob" name="dob" required readonly (click)="picker.open()" placeholder="Choose a date">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="dob == null || dob == '' || dob.hasError('dob', 'required')">
+            This is <strong>required</strong> field
+          </mat-error>
+        </mat-form-field>
+        <mat-card-actions>
+          <button mat-raised-button type="submit" [disabled]="!signupForm.valid" color="primary">REGISTER</button>
+        </mat-card-actions>
+  </form>
+</mat-card-content>
+</mat-card>

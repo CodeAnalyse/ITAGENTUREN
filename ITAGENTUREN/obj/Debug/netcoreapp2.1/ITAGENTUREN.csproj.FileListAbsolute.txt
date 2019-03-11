@@ -1,0 +1,14 @@
+F:\ITAGENTUREN\ITAGENTUREN\bin\Debug\netcoreapp2.1\ITAGENTUREN.deps.json
+F:\ITAGENTUREN\ITAGENTUREN\bin\Debug\netcoreapp2.1\ITAGENTUREN.runtimeconfig.json
+F:\ITAGENTUREN\ITAGENTUREN\bin\Debug\netcoreapp2.1\ITAGENTUREN.runtimeconfig.dev.json
+F:\ITAGENTUREN\ITAGENTUREN\bin\Debug\netcoreapp2.1\ITAGENTUREN.dll
+F:\ITAGENTUREN\ITAGENTUREN\bin\Debug\netcoreapp2.1\ITAGENTUREN.pdb
+F:\ITAGENTUREN\ITAGENTUREN\obj\Debug\netcoreapp2.1\ITAGENTUREN.csprojAssemblyReference.cache
+F:\ITAGENTUREN\ITAGENTUREN\obj\Debug\netcoreapp2.1\ITAGENTUREN.csproj.CoreCompileInputs.cache
+F:\ITAGENTUREN\ITAGENTUREN\obj\Debug\netcoreapp2.1\ITAGENTUREN.RazorAssemblyInfo.cache
+F:\ITAGENTUREN\ITAGENTUREN\obj\Debug\netcoreapp2.1\ITAGENTUREN.RazorAssemblyInfo.cs
+F:\ITAGENTUREN\ITAGENTUREN\obj\Debug\netcoreapp2.1\ITAGENTUREN.AssemblyInfoInputs.cache
+F:\ITAGENTUREN\ITAGENTUREN\obj\Debug\netcoreapp2.1\ITAGENTUREN.AssemblyInfo.cs
+F:\ITAGENTUREN\ITAGENTUREN\obj\Debug\netcoreapp2.1\ITAGENTUREN.RazorTargetAssemblyInfo.cache
+F:\ITAGENTUREN\ITAGENTUREN\obj\Debug\netcoreapp2.1\ITAGENTUREN.dll
+F:\ITAGENTUREN\ITAGENTUREN\obj\Debug\netcoreapp2.1\ITAGENTUREN.pdb

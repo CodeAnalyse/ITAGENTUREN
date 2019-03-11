@@ -1,0 +1,55 @@
+h3.heading {
+  font-weight: bold;
+  margin-top: 30px;
+  text-align: left;
+  line-height: normal !important;
+  padding-left: 0 !important;
+}
+.choose-wrap label {
+  display: block;
+  font-size: 20px;
+}
+.choose-wrap p {
+  font-size: 20px;
+  margin: 10px 0 10px 0;
+}
+
+::ng-deep .buttonClass-custom span.mat-button-wrapper {
+  font-size: 20px;
+  color: #0178b6;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+  
+  .buttonClass {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+  }
+  
+  button:hover, a:hover {
+    opacity: 0.7;
+  }
