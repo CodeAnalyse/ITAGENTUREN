@@ -5,12 +5,9 @@ import { LoginComponent } from './login/login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
-export const UserRoutes: Routes = [{
-  path: 'signup',
-  component: SignupComponent
-},
+export const UserRoutes: Routes = [
 {
-    path: 'login',
+    path: '',
     component: LoginComponent
 },
 {

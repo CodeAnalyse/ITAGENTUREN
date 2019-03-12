@@ -2,7 +2,7 @@ import * as $ from 'jquery';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AppRoutes } from './app.routing';
@@ -22,6 +22,7 @@ import { HttpModule } from '@angular/http';
 import {MatDialogModule} from '@angular/material/dialog';
 import { SharedModule } from './shared/shared.module';
 import { SpinnerComponent } from './shared/spinner.component';
+import { SignupComponent } from './user-management/signup/signup.component';
 
 import { UserService } from './services/user.services';
 
@@ -35,7 +36,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     AppHeaderComponent,
     SpinnerComponent,
     AppSidebarComponent,
-    AppLoginHeaderComponent
+    AppLoginHeaderComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     BrowserAnimationsModule,
     DemoMaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
     HttpClientModule,
     SharedModule,

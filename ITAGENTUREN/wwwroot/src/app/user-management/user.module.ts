@@ -19,7 +19,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
     ReactiveFormsModule,
     RouterModule.forChild(UserRoutes)
   ],
-  declarations: [DialogOverviewExampleDialog, SignupComponent, LoginComponent, UserProfileComponent, UserDashboardComponent],
+  declarations: [DialogOverviewExampleDialog, LoginComponent, UserProfileComponent, UserDashboardComponent],
   entryComponents: [UserProfileComponent, DialogOverviewExampleDialog]
 })
 export class UserModule {}
