@@ -12,13 +12,11 @@ export class AppHeaderComponent {
     protected localStorage: LocalStorage) { }
 
   logOut(){
-    this.localStorage.removeItem('user').subscribe((data) => {
-      
-        this.router.navigate(["login"]);
-    });
+    this.localStorage.removeItem('user');
+    this.router.navigate(["login"]);
   }
 
      openProfile(){
-      this.router.navigate(["profile", "0"]);    
+      this.router.navigate(["profile"]);    
     }     
 }

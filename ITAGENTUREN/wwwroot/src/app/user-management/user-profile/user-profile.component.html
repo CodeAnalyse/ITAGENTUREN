@@ -4,7 +4,7 @@
     <h3>{{user.firstName}} {{user.lastName}}</h3>
     <p class="title">
       {{user.email}}
-      <br/>
+      <br />
       25 years old
       <span class="phone_number">+46731095922</span>
     </p>
@@ -25,21 +25,19 @@
         <td>{{ue.language}}</td>
         <td>{{ue.experience}}</td>
       </tr>
-      </table>
-    </div>
+    </table>
   </div>
-  <div *ngIf="!isEditProfile" class="card">
-    
-    <!--p>
+</div>
+<div *ngIf="!isEditProfile" class="card">
+
+  <!--p>
       <a (click)="captureScreen()">Download CV</a>
     </p -->
-    <button *ngIf="!isReadOnly && user && user.type != 'Consultancy'" (click)="EditProfile()"
-    class="buttonClass-custom" 
-    mat-raised-button color="info">
-      
-        Edit Profile
-    </button>
-    <div  *ngIf="!isReadOnly && user && user.type != 'Consultancy'" class="choose-wrap">
+  <button (click)="EditProfile()" class="buttonClass-custom" mat-raised-button color="info">
+
+    Edit Profile
+  </button>
+  <div class="choose-wrap">
     <h3 class="heading">How do you want to work?</h3>
     <p>
       Choose if you want to work offshore or on place.
@@ -54,340 +52,371 @@
       
         Download CV
     </button>
-  </div>
-  <div fxLayout="row" *ngIf="isEditProfile" fxLayoutWrap="wrap">
-      <!-- Card column -->
-      <div fxFlex.gt-sm="100%" fxFlex="100">
-          <mat-card>
-              <mat-card-content>
-                  <button mat-raised-button style="float: right;" (click)="isEditProfile = false">
-                      Back to Profile
-                  </button>
-                  <mat-card-title>Edit Profile</mat-card-title>
-                  <mat-horizontal-stepper [linear]="isLinear">
-                    <mat-step [stepControl]="firstFormGroup">
-                        <form [formGroup]="signupForm" (ngSubmit)="register(signupForm.value)" autocomplete="off" class="my-form">
-                            <ng-template matStepLabel>Personal Details</ng-template>
-                            <input type="hidden" formControlName="userId" name="userId">
-                            <mat-form-field class="full-width">
-                               <mat-label>Email</mat-label>
-                               <input readonly matInput placeholder="Email" formControlName="emailFormControl" name="emailFormControl" required>
-                               <mat-error *ngIf="emailFormControl == null || emailFormControl == '' || emailFormControl.hasError('required')">
-                                 Email is <strong>required</strong> and should be a valid email.
-                               </mat-error>
-                               <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
+</div>
+
+<div fxLayout="row" *ngIf="isEditProfile" fxLayoutWrap="wrap" class="main-wraper">
+  <!-- Card column -->
+  <div fxFlex.gt-sm="100%" fxFlex="100">
+    <mat-card>
+      <mat-card-content>
+        <button mat-raised-button style="float: right;" (click)="isEditProfile = false">
+          Back to Profile
+        </button>
+        <mat-card-title>Edit Profile</mat-card-title>
+        <mat-horizontal-stepper [linear]="isLinear">
+          <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="signupForm" (ngSubmit)="register(signupForm.value)" autocomplete="off" class="my-form">
+              <ng-template matStepLabel>Personal Details</ng-template>
+              <input type="hidden" formControlName="userId" name="userId">
+              <mat-form-field class="full-width">
+                <mat-label>Email</mat-label>
+                <input readonly matInput placeholder="Email" formControlName="emailFormControl" name="emailFormControl"
+                  required>
+                <mat-error
+                  *ngIf="emailFormControl == null || emailFormControl == '' || emailFormControl.hasError('required')">
+                  Email is <strong>required</strong> and should be a valid email.
+                </mat-error>
+                <!-- <mat-error *ngIf="emailFormControl.hasError('required')">
                                  Email is <strong>required</strong>
                                </mat-error> -->
-                            </mat-form-field>
-                            <mat-form-field class="full-width">
-                                   <mat-label>First Name</mat-label>
-                                   <input  matInput  placeholder="First name" formControlName="firstname" name="firstname" required>
-                                   <mat-error *ngIf="firstname == null || firstname == '' || firstname.hasError('firstname', 'required')">
-                                     This is <strong>required</strong> field
-                                   </mat-error>
-                                </mat-form-field>
-                                <mat-form-field class="full-width">
-                                   <mat-label>Last Name</mat-label>
-                                   <input  matInput  placeholder="Last Name" formControlName="lastname" name="lastname" required>
-                                   <mat-error *ngIf="lastname == null || lastname == '' || lastname.hasError('lastname', 'required')">
-                                     This is <strong>required</strong> field
-                                   </mat-error>
-                                </mat-form-field>
-                                <section class="example-section">
-                                 <label class="example-margin">Gender:</label>
-                                 <mat-radio-group formControlName="gender">
-                                   <mat-radio-button class="example-margin" value="male">Male</mat-radio-button>
-                                   <mat-radio-button class="example-margin" value="female">Female</mat-radio-button>
-                                 </mat-radio-group>
-                               </section>
-                            
-                               <mat-form-field>
-                                 <mat-label>Date of Birth</mat-label>
-                                 <input matInput [matDatepicker]="picker" formControlName="dob" name="dob" required readonly (click)="picker.open()" placeholder="Choose a date">
-                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                 <mat-datepicker #picker></mat-datepicker>
-                                 <mat-error *ngIf="dob == null || dob == '' || dob.hasError('dob', 'required')">
-                                   This is <strong>required</strong> field
-                                 </mat-error>
-                               </mat-form-field>
-                               <div>
-                                 <button mat-raised-button type="submit" color="warn" [disabled]="!signupForm.valid" matStepperNext>Save & Next</button>
-                               </div>
-                         </form>
-                    </mat-step>
-                    <mat-step [stepControl]="secondFormGroup">
-                      <!-- <form [formGroup]="secondFormGroup"> -->
-                        <ng-template matStepLabel>Languages</ng-template>
-                        <fieldset>      
-                            <legend>Select Languages</legend> 
-                              <div>Hi Moulik, Which of these coding languages do you know?</div>     
-                              <div *ngFor="let option of options">
-                                <label>
-                                    <input type="checkbox"
-                                           name="options"
-                                           value="{{option.value}}"
-                                           [(ngModel)]="option.checked"/>
-                                    {{option.name}}
-                                </label>
-                              </div>
-                        </fieldset> 
-                        <div>
-                          <br/>
-                          <button mat-raised-button color="accent" matStepperPrevious>Back</button>
-                          &nbsp;
-                          <button mat-raised-button color="warn" matStepperNext>Next</button>
-                        </div>
-                      <!-- </form> -->
-                    </mat-step>
-                    <mat-step>
-                      <ng-template matStepLabel>Wrok Experience</ng-template>
-                       <fieldset>      
-                            <legend>Select Experience</legend> 
-                          <div class="card"  >
-                              <div>
-                                <table class="table">
-                                  <tr *ngFor="let option of options">
-                                    <th *ngIf="option.checked">
-                                        {{option.name}}:
-                                    </th>
-                                    <td *ngIf="option.checked">
-                                        <select style="height: 25px;" [(ngModel)]="option.experience" [(value)]="option.experience" matInput>
-                                          <option value="0-1">0-1 Years</option>
-                                          <option value="2-3">2-3 Years</option>
-                                          <option value="4-6">4-6 Years</option>
-                                          <option value="7+">7+ Years</option>
-                                        </select>
-                                        <button style="background: transparent;
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="First name" formControlName="firstname" name="firstname" required>
+                <mat-error *ngIf="firstname == null || firstname == '' || firstname.hasError('firstname', 'required')">
+                  This is <strong>required</strong> field
+                </mat-error>
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Last Name" formControlName="lastname" name="lastname" required>
+                <mat-error *ngIf="lastname == null || lastname == '' || lastname.hasError('lastname', 'required')">
+                  This is <strong>required</strong> field
+                </mat-error>
+              </mat-form-field>
+              <section class="example-section">
+                <label class="example-margin">Gender:</label>
+                <mat-radio-group formControlName="gender">
+                  <mat-radio-button class="example-margin" value="male">Male</mat-radio-button>
+                  <mat-radio-button class="example-margin" value="female">Female</mat-radio-button>
+                </mat-radio-group>
+              </section>
+
+              <mat-form-field>
+                <mat-label>Date of Birth</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="dob" name="dob" required readonly
+                  (click)="picker.open()" placeholder="Choose a date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                <mat-error *ngIf="dob == null || dob == '' || dob.hasError('dob', 'required')">
+                  This is <strong>required</strong> field
+                </mat-error>
+              </mat-form-field>
+              <div>
+                <button mat-raised-button type="submit" color="warn" [disabled]="!signupForm.valid" matStepperNext>Save
+                  & Next</button>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="secondFormGroup" class="inner-colm">
+            <!-- <form [formGroup]="secondFormGroup"> -->
+            <ng-template matStepLabel>Languages</ng-template>
+            <fieldset>
+              <legend class="box"><span>Profile</span> <span>20% Done</span></legend>
+              <div class="border">
+                <ul>
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                  <li>&nbsp;</li>
+                </ul>
+              </div>
+              <div class="inner-wrap">
+                <div>Hi Moulik, Which of these coding languages do you know?</div>
+                <div *ngFor="let option of options">
+                  <label class="checkbox">
+                    <input type="checkbox" name="options" value="{{option.value}}" [(ngModel)]="option.checked" />
+                    <div class="square">
+                    </div>
+                    {{option.name}}
+                  </label>
+
+                </div>
+              </div>
+            </fieldset>
+            <div>
+              <br />
+              <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+              &nbsp;
+              <button mat-raised-button color="warn" matStepperNext>Next</button>
+            </div>
+            <!-- </form> -->
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Wrok Experience</ng-template>
+            <fieldset class="work-experience">
+                <strong style="
+                font-size: 22px;
+                font-weight: 600;
+                display: inline-block;
+                margin-top: 20px;
+                line-height: 31px;
+            "> How many years of experience do you have in each of these code languages? </strong>
+              <legend class="box"><span>Profile</span> <span>60% Done</span></legend>
+              <div class="border">
+                <ul>
+                  <li style="width: 60%;">&nbsp;</li>
+                  <li style="width: 40%;background: #ccc;">&nbsp;</li>
+                </ul>
+              </div>
+              <div class="card inner-wrap">
+                      <div>Choose nummer of years</div>
+                <div>
+                  <table class="table">
+                    <tr *ngFor="let option of options">
+                      <th *ngIf="option.checked">
+                        {{option.name}}:
+                      </th>
+                      <td *ngIf="option.checked">
+                        <select style="height: 25px;" [(ngModel)]="option.experience" [(value)]="option.experience"
+                          matInput>
+                          <option value="0-1">0-1 Years</option>
+                          <option value="2-3">2-3 Years</option>
+                          <option value="4-6">4-6 Years</option>
+                          <option value="7+">7+ Years</option>
+                        </select>
+                        <button style="background: transparent;
                                         border: transparent;
-                                        cursor: pointer;" type="button" class="btn btn-default" (click)="remove(option.value)">
-                                            <i class="material-icons">
-                                                delete
-                                                </i>
-                                        </button>
-                                      </td>
-                                  </tr>
-                                </table>
-                                </div>
-                            </div>
-                        </fieldset>
-                      <div>
-                        <br/>
-                        <button mat-raised-button color="accent" matStepperPrevious>Back</button>
-                        &nbsp;
-                        <button mat-raised-button type="button" color="warn" (click)="saveExperience()" matStepperNext>Save & Finish</button>
-                      </div>
-                    </mat-step>
-                  </mat-horizontal-stepper>
-              
-              </mat-card-content>
-               
-          </mat-card>    
+                                        cursor: pointer;" type="button" class="btn btn-default"
+                          (click)="remove(option.value)">
+                          <i class="material-icons">
+                            delete
+                          </i>
+                        </button>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </fieldset>
+            <div>
+              <br />
+              <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+              &nbsp;
+              <button mat-raised-button type="button" color="warn" (click)="saveExperience()" matStepperNext>Save &
+                Finish</button>
+            </div>
+          </mat-step>
+        </mat-horizontal-stepper>
+
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+</div>
+
+<div id="contentToConvert" *ngIf="user" [ngStyle]="{ 'display' : isExporting ? 'block' : 'none' }" style="font-family: sans-serif;margin:0;min-width: 30cm !important;">
+  <div class="top-header" style="background: #2f5799; font-size: 32px; color: #fff; font-weight: 600; 
+   float:left; width:100%;">
+   <div class="container" style="max-width: 1200px; margin:0 auto; width:100%;padding: 0px 20px;">
+    <p style="    padding-bottom: 5px;
+  margin: 0;
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: 14.5px;">IT-AGENTUREN</p>
+</div>
+  </div>
+  <div class="clear"></div>
+  <div class="container" style="max-width: 1200px; margin:0 auto; width:100%">
+  <div class="main-content"style="width:100%; float:left;">
+    <div class="column-left" style="float: left; width: 63%; padding-left:15px; padding-right: 15px; position: relative;">
+      <h1 style="font-weight: 300; font-size: 52px; text-align: center; letter-spacing: 14.5px; margin-bottom: 0; margin-top: 80px;">{{user.firstName}}<span>&nbsp;</span>{{user.lastName}}</h1>
+      <p style="width: 101px; margin: 18px auto; border: 3px solid #2f5799; position: absolute; left: 26px; right: 0; border-radius: 40px; height: 0px;"><span>&nbsp;</span></p>
+      <h2 style="font-weight: normal; text-align: center; margin-top: 94px; font-size: 32px; margin-bottom: 120px;">BACK-END UTVECKLARE</h2>
+      
+      <div class="profile-heading" style="padding-left: 44px;">
+        <h2 style="color: #2f579a;
+  font-size: 34px;
+  letter-spacing: 10.5px;">PROFILE</h2>
+        <p style="font-size: 18px; line-height: 28px; margin-bottom:70px; padding-right: 50px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. printing and typesetting industry. dummy text 
+        of the printing and typesetting industry. printing and typesetting industry. dummy text of the printing and typesetting industry.
+        printing and typesetting industry. dummy text of the printing and typesetting industry. printing and typesetting industry.
+        dummy text of the printing and typesetting industry. printing and typesetting industry. dummy text of the printing and typesetting 
+        industry. 
+        printing and typesetting industry.</p>
+        
+        <h2 style="color: #2f579a; font-size: 34px; letter-spacing: 10.5px;">ARBETSLIVSERFARENHET</h2>
+        <a href="#" style="font-size: 21px; text-decoration: none; color: #444;">JAVA-UTVECKLARE <span style="display: inline-block; 
+          border: 1px solid #2f579a; width: 0px;
+          height: 15px;
+          margin-top: -7px;
+          vertical-align: middle;
+          margin-left: 18px;">&nbsp;</span></a>
+
+          <a href="#" style="font-size: 21px;
+          text-decoration: none;
+          color: #444; padding-left: 26px;">NEW DELHI<span style="display: inline-block;
+          border: 1px solid #2f579a;
+          width: 0px;
+          height: 15px;
+          margin-top: -7px;
+          vertical-align: middle;
+          margin-left: 28px;">&nbsp;</span></a>
+
+          <a href="#" style="font-size: 21px;
+          text-decoration: none;
+          color: #444; padding-left: 26px;">2016 - PRESENT</a>
+        <p style="font-size: 18px; line-height: 28px; margin-bottom:70px; padding-right: 50px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. printing and typesetting industry. dummy text 
+        of the printing and typesetting industry. printing and typesetting industry. dummy text of the printing and typesetting industry.
+        printing and typesetting industry. dummy text of the printing and typesetting industry. printing and typesetting industry.
+        dummy text of the printing and typesetting industry. printing and typesetting industry. dummy text of the printing and typesetting 
+        industry. 
+        printing and typesetting industry.</p>
+        
+        
+        <a href="#" style="font-size: 21px; text-decoration: none; color: #444;">JAVA-UTVECKLARE <span style="display: inline-block; 
+          border: 1px solid #2f579a; width: 0px;
+          height:	15px;
+          margin-top: -7px;
+          vertical-align: middle;
+          margin-left: 18px;">&nbsp;</span></a>
+
+          <a href="#" style="font-size: 21px;
+          text-decoration: none;
+          color: #444; padding-left: 26px;">NEW DELHI<span style="display: inline-block;
+          border: 1px solid #2f579a;
+          width: 0px;
+          height: 15px;
+          margin-top: -7px;
+          vertical-align: middle;
+          margin-left: 28px;">&nbsp;</span></a>
+
+          <a href="#" style="font-size: 21px;
+          text-decoration: none;
+          color: #444; padding-left: 26px;">2013 - 2016</a>
+        <p style="font-size: 18px; line-height: 28px; margin-bottom:70px; padding-right: 50px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. printing and typesetting industry. dummy text 
+        of the printing and typesetting industry. printing and typesetting industry. dummy text of the printing and typesetting industry.
+        printing and typesetting industry. dummy text of the printing and typesetting industry. printing and typesetting industry.
+        dummy text of the printing and typesetting industry. printing and typesetting industry. dummy text of the printing and typesetting 
+        industry. 
+        printing and typesetting industry.</p>
+        <a href="#" style="font-size: 21px; text-decoration: none; color: #444;">JAVA-UTVECKLARE <span style="display: inline-block; 
+          border: 1px solid #2f579a; width: 0px;
+          height: 15px;
+          margin-top: -7px;
+          vertical-align: middle;
+          margin-left: 18px;">&nbsp;</span></a>
+
+          <a href="#" style="font-size: 21px;
+          text-decoration: none;
+          color: #444; padding-left: 26px;">NEW DELHI<span style="display: inline-block;
+          border: 1px solid #2f579a;
+          width: 0px;
+          height: 15px;
+          margin-top: -7px;
+          vertical-align: middle;
+          margin-left: 28px;">&nbsp;</span></a>
+
+          <a href="#" style="font-size: 21px;
+          text-decoration: none;
+          color: #444; padding-left: 26px;">2016 - PRESENT</a>
+        <p style="font-size: 18px; line-height: 28px; margin-bottom:70px; padding-right: 50px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. printing and typesetting industry. dummy text 
+        of the printing and typesetting industry. printing and typesetting industry. dummy text of the printing and typesetting industry.
+        printing and typesetting industry. dummy text of the printing and typesetting industry. printing and typesetting industry.
+        dummy text of the printing and typesetting industry. printing and typesetting industry. dummy text of the printing and typesetting 
+        industry. 
+        printing and typesetting industry.</p>
       </div>
-  </div>
-
-
-  <div id="contentToConvert" *ngIf="user" [ngStyle]="{ 'display' : isExporting ? 'block' : 'none' }" style="font-family: sans-serif;margin:0;min-width: 30cm !important;">
-    <div class="top-header" style="background: #2f5799; font-size: 32px; color: #fff; font-weight: 600; 
-		 float:left; width:100%;">
-		 <div class="container" style="max-width: 1200px; margin:0 auto; width:100%;padding: 0px 20px;">
-			<p style="    padding-bottom: 5px;
-    margin: 0;
-    font-size: 48px;
-    font-weight: 600;
-    letter-spacing: 14.5px;">IT-AGENTUREN</p>
-	</div>
-		</div>
-		<div class="clear"></div>
-		<div class="container" style="max-width: 1200px; margin:0 auto; width:100%">
-		<div class="main-content"style="width:100%; float:left;">
-			<div class="column-left" style="float: left; width: 63%; padding-left:15px; padding-right: 15px; position: relative;">
-				<h1 style="font-weight: 300; font-size: 52px; text-align: center; letter-spacing: 14.5px; margin-bottom: 0; margin-top: 80px;">{{user.firstName}}<span>&nbsp;</span>{{user.lastName}}</h1>
-				<p style="width: 101px; margin: 18px auto; border: 3px solid #2f5799; position: absolute; left: 26px; right: 0; border-radius: 40px; height: 0px;"><span>&nbsp;</span></p>
-				<h2 style="font-weight: normal; text-align: center; margin-top: 94px; font-size: 32px; margin-bottom: 120px;">BACK-END UTVECKLARE</h2>
-				
-				<div class="profile-heading" style="padding-left: 44px;">
-					<h2 style="color: #2f579a;
-    font-size: 34px;
-    letter-spacing: 10.5px;">PROFILE</h2>
-					<p style="font-size: 18px; line-height: 28px; margin-bottom:70px; padding-right: 50px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. printing and typesetting industry. dummy text 
-					of the printing and typesetting industry. printing and typesetting industry. dummy text of the printing and typesetting industry.
-					printing and typesetting industry. dummy text of the printing and typesetting industry. printing and typesetting industry.
-					dummy text of the printing and typesetting industry. printing and typesetting industry. dummy text of the printing and typesetting 
-					industry. 
-					printing and typesetting industry.</p>
-					
-					<h2 style="color: #2f579a; font-size: 34px; letter-spacing: 10.5px;">ARBETSLIVSERFARENHET</h2>
-					<a href="#" style="font-size: 21px; text-decoration: none; color: #444;">JAVA-UTVECKLARE <span style="display: inline-block; 
-						border: 1px solid #2f579a; width: 0px;
-						height: 15px;
-						margin-top: -7px;
-						vertical-align: middle;
-						margin-left: 18px;">&nbsp;</span></a>
-	
-						<a href="#" style="font-size: 21px;
-						text-decoration: none;
-						color: #444; padding-left: 26px;">NEW DELHI<span style="display: inline-block;
-						border: 1px solid #2f579a;
-						width: 0px;
-						height: 15px;
-						margin-top: -7px;
-						vertical-align: middle;
-						margin-left: 28px;">&nbsp;</span></a>
-	
-						<a href="#" style="font-size: 21px;
-						text-decoration: none;
-						color: #444; padding-left: 26px;">2016 - PRESENT</a>
-					<p style="font-size: 18px; line-height: 28px; margin-bottom:70px; padding-right: 50px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. printing and typesetting industry. dummy text 
-					of the printing and typesetting industry. printing and typesetting industry. dummy text of the printing and typesetting industry.
-					printing and typesetting industry. dummy text of the printing and typesetting industry. printing and typesetting industry.
-					dummy text of the printing and typesetting industry. printing and typesetting industry. dummy text of the printing and typesetting 
-					industry. 
-					printing and typesetting industry.</p>
-					
-					
-					<a href="#" style="font-size: 21px; text-decoration: none; color: #444;">JAVA-UTVECKLARE <span style="display: inline-block; 
-						border: 1px solid #2f579a; width: 0px;
-						height:	15px;
-						margin-top: -7px;
-						vertical-align: middle;
-						margin-left: 18px;">&nbsp;</span></a>
-	
-						<a href="#" style="font-size: 21px;
-						text-decoration: none;
-						color: #444; padding-left: 26px;">NEW DELHI<span style="display: inline-block;
-						border: 1px solid #2f579a;
-						width: 0px;
-						height: 15px;
-						margin-top: -7px;
-						vertical-align: middle;
-						margin-left: 28px;">&nbsp;</span></a>
-	
-						<a href="#" style="font-size: 21px;
-						text-decoration: none;
-						color: #444; padding-left: 26px;">2013 - 2016</a>
-					<p style="font-size: 18px; line-height: 28px; margin-bottom:70px; padding-right: 50px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. printing and typesetting industry. dummy text 
-					of the printing and typesetting industry. printing and typesetting industry. dummy text of the printing and typesetting industry.
-					printing and typesetting industry. dummy text of the printing and typesetting industry. printing and typesetting industry.
-					dummy text of the printing and typesetting industry. printing and typesetting industry. dummy text of the printing and typesetting 
-					industry. 
-					printing and typesetting industry.</p>
-					<a href="#" style="font-size: 21px; text-decoration: none; color: #444;">JAVA-UTVECKLARE <span style="display: inline-block; 
-						border: 1px solid #2f579a; width: 0px;
-						height: 15px;
-						margin-top: -7px;
-						vertical-align: middle;
-						margin-left: 18px;">&nbsp;</span></a>
-	
-						<a href="#" style="font-size: 21px;
-						text-decoration: none;
-						color: #444; padding-left: 26px;">NEW DELHI<span style="display: inline-block;
-						border: 1px solid #2f579a;
-						width: 0px;
-						height: 15px;
-						margin-top: -7px;
-						vertical-align: middle;
-						margin-left: 28px;">&nbsp;</span></a>
-	
-						<a href="#" style="font-size: 21px;
-						text-decoration: none;
-						color: #444; padding-left: 26px;">2016 - PRESENT</a>
-					<p style="font-size: 18px; line-height: 28px; margin-bottom:70px; padding-right: 50px;">Lorem Ipsum is simply dummy text of the printing and typesetting industry. printing and typesetting industry. dummy text 
-					of the printing and typesetting industry. printing and typesetting industry. dummy text of the printing and typesetting industry.
-					printing and typesetting industry. dummy text of the printing and typesetting industry. printing and typesetting industry.
-					dummy text of the printing and typesetting industry. printing and typesetting industry. dummy text of the printing and typesetting 
-					industry. 
-					printing and typesetting industry.</p>
-				</div>
-			</div>
-			
-			
-			
-			
-			<div class="column-right" style="float: left; width: 33%; background: #f2f2f3;">
-				<div class="img-right" style="margin: 21px 58px 0px;
-					background: #f4f8fb;
-					padding: 30px;">
-								<a href="#" style="display: block;
-					background: #fff;
-					margin: 25px auto;
-					width: 190px;
-					height: 190px;
-					padding: 20px;
-					border-radius: 100%;
-					box-shadow: 0px 0px 41px 0px #cec6c6;"><img src="assets/images/images/user-img.png" style="display: block; margin: 0 auto; width:142px;"></a>
-				</div>
-				<div class="content-right" style="float: left; width: 100%; padding: 0px 22px;">
-					<h2 style="margin-top: 0px;
-					font-size: 34px;
-					color: #2f579a;">{{user.firstName}} {{user.lastName}}</h2>
-          <p class="title">
-            {{user.email}}
-            <br/>
-            {{calculateAge(user.dob)}} years
-          </p>				
-					<table style="width: 100%;">
-								<tbody>
-									<tr>
-										<td style="font-size: 20px; padding-bottom: 18px;">ID</td>
-										<td style="font-size: 20px; padding-bottom: 18px;">55402</td>
-									</tr>
-									<tr>
-										<td style="font-size: 20px; padding-bottom: 18px;">Sprak</td>
-										<td style="font-size: 20px; padding-bottom: 18px;">Engelska</td>
-									</tr>
-									<tr>
-										<td style="font-size: 20px; padding-bottom: 18px;">Tillganglighet</td>
-										<td style="font-size: 20px; padding-bottom: 18px;">Offshore eller</td>
-									</tr>
-									<tr>
-										<td style="font-size: 20px; padding-bottom: 18px;"></td>
-										<td style="font-size: 20px; padding-bottom: 18px;">Pa plates om</td>
-									</tr>
-									<tr>
-										<td style="font-size: 20px; padding-bottom: 18px;"></td>
-										<td style="font-size: 20px; padding-bottom: 18px;">1 manad</td>
-									</tr>
-									<tr>
-										<td style="font-size: 20px; padding-bottom: 18px;">Prismodell</td>
-										<td style="font-size: 20px; padding-bottom: 18px;">Flex</td>
-									</tr>
-									<tr>
-										<td style="font-size: 20px; padding-bottom: 18px;">Alder</td>
-										<td style="font-size: 20px; padding-bottom: 18px;">39 ar</td>
-									</tr>
-									<tr>
-										<td style="font-size: 20px; padding-bottom: 18px;">Bast pa</td>
-										<td style="font-size: 20px; padding-bottom: 18px;">PHP</td>
-									</tr>
-									<tr>
-										<td style="font-size: 20px; padding-bottom: 18px;">Tekniskt test:</td>
-										<td style="font-size: 20px; padding-bottom: 18px;"></td>
-									</tr>
-									<tr>
-										<td style="font-size: 20px; padding-bottom: 18px;">Web C# Test</td>
-										<td style="font-size: 20px; padding-bottom: 18px;">22/30 poang</td>
-									</tr>
-									<tr>
-										<td style="font-size: 20px; padding-bottom: 18px;">Kon</td>
-										<td style="font-size: 20px; padding-bottom: 18px;">Man</td>
-									</tr>
-								</tbody>
-							</table>
-							<h2 style="font-size: 34px; color: #2f579a; margin-top: 72px;">Tekniska fardigheter</h2>
-							<table style="width: 100%;">
-								<tbody>
-                  <tr *ngFor="let ue of userExperience">
-                      <td style="font-size: 20px; padding-bottom: 18px;">{{ue.language}}</td>
-                      <td style="font-size: 20px; padding-bottom: 18px;">{{ue.experience}} ar</td>
-                  </tr>
-								</tbody>
-							</table>
-					
-					
-					</div>
-					
-				</div>
-			</div>
-			</div>
-		<div class="clear"></div>
-  </div>
+    </div>
+    
+    
+    
+    
+    <div class="column-right" style="float: left; width: 33%; background: #f2f2f3;">
+      <div class="img-right" style="margin: 21px 58px 0px;
+        background: #f4f8fb;
+        padding: 30px;">
+              <a href="#" style="display: block;
+        background: #fff;
+        margin: 25px auto;
+        width: 190px;
+        height: 190px;
+        padding: 20px;
+        border-radius: 100%;
+        box-shadow: 0px 0px 41px 0px #cec6c6;"><img src="assets/images/images/user-img.png" style="display: block; margin: 0 auto; width:142px;"></a>
+      </div>
+      <div class="content-right" style="float: left; width: 100%; padding: 0px 22px;">
+        <h2 style="margin-top: 0px;
+        font-size: 34px;
+        color: #2f579a;">{{user.firstName}} {{user.lastName}}</h2>
+        <p class="title">
+          {{user.email}}
+          <br/>
+          {{calculateAge(user.dob)}} years
+        </p>				
+        <table style="width: 100%;">
+              <tbody>
+                <tr>
+                  <td style="font-size: 20px; padding-bottom: 18px;">ID</td>
+                  <td style="font-size: 20px; padding-bottom: 18px;">55402</td>
+                </tr>
+                <tr>
+                  <td style="font-size: 20px; padding-bottom: 18px;">Sprak</td>
+                  <td style="font-size: 20px; padding-bottom: 18px;">Engelska</td>
+                </tr>
+                <tr>
+                  <td style="font-size: 20px; padding-bottom: 18px;">Tillganglighet</td>
+                  <td style="font-size: 20px; padding-bottom: 18px;">Offshore eller</td>
+                </tr>
+                <tr>
+                  <td style="font-size: 20px; padding-bottom: 18px;"></td>
+                  <td style="font-size: 20px; padding-bottom: 18px;">Pa plates om</td>
+                </tr>
+                <tr>
+                  <td style="font-size: 20px; padding-bottom: 18px;"></td>
+                  <td style="font-size: 20px; padding-bottom: 18px;">1 manad</td>
+                </tr>
+                <tr>
+                  <td style="font-size: 20px; padding-bottom: 18px;">Prismodell</td>
+                  <td style="font-size: 20px; padding-bottom: 18px;">Flex</td>
+                </tr>
+                <tr>
+                  <td style="font-size: 20px; padding-bottom: 18px;">Alder</td>
+                  <td style="font-size: 20px; padding-bottom: 18px;">39 ar</td>
+                </tr>
+                <tr>
+                  <td style="font-size: 20px; padding-bottom: 18px;">Bast pa</td>
+                  <td style="font-size: 20px; padding-bottom: 18px;">PHP</td>
+                </tr>
+                <tr>
+                  <td style="font-size: 20px; padding-bottom: 18px;">Tekniskt test:</td>
+                  <td style="font-size: 20px; padding-bottom: 18px;"></td>
+                </tr>
+                <tr>
+                  <td style="font-size: 20px; padding-bottom: 18px;">Web C# Test</td>
+                  <td style="font-size: 20px; padding-bottom: 18px;">22/30 poang</td>
+                </tr>
+                <tr>
+                  <td style="font-size: 20px; padding-bottom: 18px;">Kon</td>
+                  <td style="font-size: 20px; padding-bottom: 18px;">Man</td>
+                </tr>
+              </tbody>
+            </table>
+            <h2 style="font-size: 34px; color: #2f579a; margin-top: 72px;">Tekniska fardigheter</h2>
+            <table style="width: 100%;">
+              <tbody>
+                <tr *ngFor="let ue of userExperience">
+                    <td style="font-size: 20px; padding-bottom: 18px;">{{ue.language}}</td>
+                    <td style="font-size: 20px; padding-bottom: 18px;">{{ue.experience}} ar</td>
+                </tr>
+              </tbody>
+            </table>
+        
+        
+        </div>
+        
+      </div>
+    </div>
+    </div>
+  <div class="clear"></div>
+</div>

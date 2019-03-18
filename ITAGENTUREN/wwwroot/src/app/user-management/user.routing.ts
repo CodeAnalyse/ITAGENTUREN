@@ -3,18 +3,16 @@ import { Routes } from '@angular/router';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
-export const UserRoutes: Routes = [
+export const UserRoutes: Routes = [{
+  path: 'signup',
+  component: SignupComponent
+},
 {
-    path: '',
+    path: 'login',
     component: LoginComponent
 },
 {
-    path: 'user-dash',
-    component: UserDashboardComponent
-},
-{
-    path: 'profile/:id',
+    path: '',
     component: UserProfileComponent
 }];

@@ -315,3 +315,238 @@ html {
     -o-background-size: cover;
     background-size: cover;
 }
+h1.banner-heading {
+    width: 100%;
+    font-size: 80px;
+}
+.footer-menus {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    right: 0;
+}
+.footer-menus ul {
+    padding: 10px 0;
+    background: #fff;
+    margin: 0;
+}
+.footer-menus ul li {
+    float: left;
+    width: calc(100% / 4);
+    text-align: center;
+    list-style:none;
+}
+.footer-menus ul li a {
+    font-size: 16px;
+    display: inline-block;
+    text-align: center;
+}
+.footer-menus ul li a {
+    display: inline-block;
+    text-align: center;
+    font-weight: normal;
+    color: #000;
+    font-size: 14px;
+    height: auto;
+}
+span.icon-img > img {
+    width: 20px;
+}
+span.icon-img {
+    display: block;
+    height: 24px;
+}
+
+.footer-menus ul {
+    padding: 9px 0 0;
+    background: #fff;
+    margin: 0;
+    box-shadow: 0 0 29px #ccc;
+}
+.footer-menus {display: none;}
+fieldset.ng-star-inserted .ng-star-inserted {
+    background: #fff;
+    margin: 11px 0px;
+    border-radius: 10px;
+    padding: 10px 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+fieldset.ng-star-inserted .ng-star-inserted label {
+    display: block;
+    position: relative;
+}
+fieldset.ng-star-inserted .ng-star-inserted label input {
+    position: absolute;
+    right: 0px;
+}
+fieldset.ng-star-inserted {
+    border: none;
+}
+fieldset.ng-star-inserted {
+    border: none;
+    display: block;
+}
+fieldset.ng-star-inserted legend {
+    display: block;
+    font-size: 29px;
+    line-height: normal;
+    font-weight: 600;
+    width: 100%;
+}
+legend.box span {
+    display: inline-block;
+    width: 50%;
+}
+legend.box span:nth-child(2) {
+    text-align: right;
+}   
+.checkbox {
+    user-select: none;
+  }
+  mat-sidenav-container {
+    padding-bottom: 50px;
+}
+  
+  .checkbox .square {
+    width: 20px;
+    height: 20px;
+    border: solid 1px #ccc;
+    display: inline-block;
+    border-radius: 50px;
+    position: absolute;
+    right: 0;
+}
+  
+  .checkbox input[type="checkbox"] {
+    display: none;
+  }
+  
+  .checkbox input:checked + .square {
+    background-color: #2c75ba;
+  }
+  .mat-horizontal-stepper-header-container{width:100%}
+  .border ul {padding: 0px;}
+  .border ul li {
+    padding: 0;
+    list-style: none;
+    background: #ccc;
+    margin: 0;
+    height: 8px;
+    display: inline-block;
+    width: 19%;
+}
+.border ul li:first-child {
+    background: #afd475;
+}
+.border ul li:nth-child(2) {
+    background: #ed2027;
+    width: 25%;
+}
+.border ul li:nth-child(3) {
+    background: #afd475;
+    width: 15%;
+}
+.border ul li:nth-child(4) {
+    background: #d6d6d8;
+    width: 41%;
+}
+.mat-horizontal-content-container {
+    overflow: hidden;
+    padding: 0 0px 24px 0;
+}
+fieldset.ng-star-inserted {
+    padding: 0 !important;
+    margin: 0;
+}
+fieldset.ng-star-inserted .ng-star-inserted label {
+    display: block;
+    position: relative;
+    color: #000;
+    font-size: 21px;
+    font-weight: 500;
+}
+.inner-wrap, fieldset.work-experience.ng-star-inserted {
+    width: 70%;
+    margin: 0 auto;
+}
+.mat-horizontal-content-container{padding:0px !important;}
+fieldset.work-experience.ng-star-inserted .card {
+    max-width: 100%;
+}
+
+fieldset.work-experience table.table {
+    border-collapse: collapse;
+}
+fieldset.work-experience table.table tr td.ng-star-inserted {
+    border-left: none !important;
+    position: relative;
+}
+fieldset.work-experience table.table tr th.ng-star-inserted {
+    border-right: none !important;
+}
+fieldset.work-experience table.table tr.ng-star-inserted {
+    margin-bottom: 0;
+    display: table;
+    width: 100%;
+}
+fieldset.work-experience button.btn.btn-default {
+    position: absolute;
+    right: 0;
+}
+fieldset.work-experience table.table tr th.ng-star-inserted {
+    border-right: none !important;
+    width: 40%;
+    text-align: left;
+}
+fieldset.work-experience select {
+    border: 1px solid #ccc;
+    padding: 5px 12px;
+    height: auto !important;
+    min-height: auto;
+} 
+p.center-text {
+    text-align: center;
+}
+.searchbox {
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+}
+
+.searchbox input {
+    border: 1px solid #eee;
+    padding: 10px 20px;
+    width: 90%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 18px;
+    border-radius: 7px;
+}
+.searchbox ::placeholder {color:#f1f1f1; font-size: 15px;}
+.searchbox button {
+    position: absolute;
+    right: 18px;
+    background: #0478b7;
+    border: none;
+    padding: 13px 16px;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 600;
+}
+
+
+
+@media(max-width:991px){
+    .inner-wrap, .inner-wrap, fieldset.work-experience.ng-star-inserted{width:100%;}
+    fieldset.ng-star-inserted legend {font-size: 21px; padding-bottom: 0;}
+    h1.banner-heading {
+        font-size: 33px;
+    }
+    .footer-menus {display: block;}
+}

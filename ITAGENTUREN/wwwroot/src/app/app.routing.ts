@@ -1,19 +1,18 @@
-import { RouterModule, Routes } from '@angular/router';
+import { Routes } from '@angular/router';
+
 import { FullComponent } from './layouts/full/full.component';
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
-import { SignupComponent } from './user-management/signup/signup.component';
 
 export const AppRoutes: Routes = [
-
-  {
-    path: '',
-    redirectTo: '/login',
-    pathMatch: 'full'
-  },
   {
     path: '',
     component: FullComponent,
     children: [
+      {
+        path: '',
+        redirectTo: '/login',
+        pathMatch: 'full'
+      },
       {
         path: '',
         loadChildren:
@@ -24,7 +23,7 @@ export const AppRoutes: Routes = [
         loadChildren: './starter/starter.module#StarterModule'
       },
       {
-        path: '',
+        path: 'profile',
         loadChildren: './user-management/user.module#UserModule'
       }
     ]
@@ -32,18 +31,10 @@ export const AppRoutes: Routes = [
   {
     path: '',
       component: LoginLayoutComponent,
-    children: [
+      children: [
       {
         path: '',
-        redirectTo: '/login',
-        pathMatch: 'full'
-      },
-      {
-        path: 'login',
         loadChildren: './user-management/user.module#UserModule'
-      }, {
-        path: 'signup',
-        component: SignupComponent
       }]
   }
 ];

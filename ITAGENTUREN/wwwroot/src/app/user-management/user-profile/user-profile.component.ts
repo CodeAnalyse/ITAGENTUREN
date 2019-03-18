@@ -133,10 +133,12 @@ export class UserProfileComponent implements OnInit {
         var position = 0;  
         pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
         pdf.save(this.user.firstName + '.pdf'); // Generated PDF  
-        this.isExporting = false;
-        dialogRef.close();
+        setTimeout(function(){
+          this.isExporting = false;
+          dialogRef.close();
+        }.bind(this), 1000);
       });
-    }.bind(this), 5000);  
+    }.bind(this), 1000);  
   }
 
   remove(val){

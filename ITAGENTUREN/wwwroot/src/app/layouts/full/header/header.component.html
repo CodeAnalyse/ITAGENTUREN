@@ -1,16 +1,58 @@
-        
 <!-- ============================================================== -->
 <!-- Profile - style you can find in header.scss -->
 <!-- ============================================================== -->
-<button [matMenuTriggerFor]="profile" mat-icon-button class="m-r-5"> <img src="assets/images/users/Baseline-Profile-Icon-Top-Bar.svg" alt="user" class="profile-pic"> </button>
+<button [matMenuTriggerFor]="profile" mat-icon-button class="m-r-5"> <img
+        src="assets/images/users/Baseline-Profile-Icon-Top-Bar.svg" alt="user" class="profile-pic"> </button>
 <mat-menu #profile="matMenu" class="mymegamenu">
-    <button mat-menu-item>
-        <mat-icon>settings</mat-icon> Settings </button>
+    <button mat-menu-item style="display:none;">
+        <mat-icon>settings</mat-icon> Settings
+    </button>
     <button (click)="openProfile()" mat-menu-item>
-        <mat-icon>account_box</mat-icon> Profile </button>
+        <mat-icon><img src="assets/images/Profile_Icon_Not_Selected.svg" alt="" /></mat-icon> Profile
+    </button>
     <button mat-menu-item>
-        <mat-icon>notifications_off</mat-icon> Disable notifications </button>
+        <mat-icon><img src="assets/images/Time_Report_Icon_Not_Selected.svg" alt="" /></mat-icon> Time Report
+    </button>
+    <button mat-menu-item>
+            <mat-icon><img src="assets/images/Skill_Test_Icon_Not_Selected.svg" alt="" /></mat-icon> Tests
+        </button>
+        <button mat-menu-item>
+                <mat-icon><img src="assets/images/Message_Icon_Not_Selected.svg" alt="" /></mat-icon> Status
+            </button>
+    <button mat-menu-item style="display:none;">
+        <mat-icon>notifications_off</mat-icon> Disable notifications
+    </button>
     <button mat-menu-item (click)="logOut()">
-        <mat-icon>exit_to_app</mat-icon> Sign Out </button>
+        <mat-icon>exit_to_app</mat-icon> Sign Out
+    </button>
 </mat-menu>
+<div class="footer-menus">
+    <ul>
+        <li>
+            <a href="#">
+                <span class="icon-img"><img src="assets/images/Profile_Icon_Not_Selected.svg" alt="" /></span>
+                <span class="text">Profile</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon-img"><img src="assets/images/Time_Report_Icon_Not_Selected.svg" alt="" /></span>
+                <span> Report</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon-img"><img src="assets/images/Skill_Test_Icon_Not_Selected.svg" alt="" /></span>
+                <span> Tests</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <span class="icon-img"><img src="assets/images/Message_Icon_Not_Selected.svg" alt="" /></span>
+                <span> Status</span>
+            </a>
+        </li>
+        <div class="clearfix"></div>
+    </ul>
 
+</div>

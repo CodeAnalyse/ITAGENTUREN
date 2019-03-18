@@ -8,7 +8,6 @@ import { UserRoutes } from './user.routing';
 import { LoginComponent } from './login/login.component';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserProfileComponent, DialogOverviewExampleDialog } from './user-profile/user-profile.component';
-import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 @NgModule({
   imports: [
@@ -19,7 +18,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
     ReactiveFormsModule,
     RouterModule.forChild(UserRoutes)
   ],
-  declarations: [DialogOverviewExampleDialog, LoginComponent, UserProfileComponent, UserDashboardComponent],
+  declarations: [SignupComponent, LoginComponent, UserProfileComponent, DialogOverviewExampleDialog],
   entryComponents: [UserProfileComponent, DialogOverviewExampleDialog]
 })
 export class UserModule {}

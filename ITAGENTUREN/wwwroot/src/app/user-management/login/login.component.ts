@@ -32,14 +32,8 @@ export class LoginComponent implements OnInit {
       throw error;
     })).subscribe(data => {
       this.showSpinner =  false;
-      var usr = JSON.parse(data["_body"]);
-      this.localStorage.setItem('user', usr).subscribe(() => {});
-      if(usr.type == "Consultancy"){
-        this.router.navigate(["user-dash"]);
-      }
-      else{
-        this.router.navigate(["starter"]);
-      }
+      this.localStorage.setItem('user', JSON.parse(data["_body"])).subscribe(() => {});
+      this.router.navigate(["starter"]);
     }); 
   }
 }
