@@ -17,6 +17,6 @@ export class AppHeaderComponent {
   }
 
      openProfile(){
-      this.router.navigate(["profile"]);    
+      this.router.navigate(["profile", "0"]);    
     }     
 }

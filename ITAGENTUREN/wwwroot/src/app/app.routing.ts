@@ -23,11 +23,11 @@ export const AppRoutes: Routes = [
         loadChildren: './starter/starter.module#StarterModule'
       },
       {
-        path: 'profile',
+        path: 'profile/:id',
         loadChildren: './user-management/user.module#UserModule'
       },
       {
-        path: 'admin',
+        path: '',
         loadChildren: './Admin/admin.module#AdminModule'
       }
     ]
