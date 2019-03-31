@@ -33,10 +33,9 @@ export class LoginComponent implements OnInit {
     })).subscribe(data => {
       this.showSpinner =  false;
       var usr = JSON.parse(data["_body"]);
-      console.log(usr);
       this.localStorage.setItem('user', usr).subscribe(() => {});
       if(usr['type'] == 'Consultancy'){
-        this.router.navigate(["user-dash"]);
+        this.router.navigate(["admin/user-dash"]);
       }else{
         this.router.navigate(["starter"]);
       }
