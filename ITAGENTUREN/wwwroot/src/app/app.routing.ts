@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 import { FullComponent } from './layouts/full/full.component';
 import { LoginLayoutComponent } from './layouts/login-layout/login-layout.component';
-
+import { DetailJobComponent } from './detail-job/detail-job.component';
 export const AppRoutes: Routes = [
   {
     path: '',
@@ -23,8 +23,17 @@ export const AppRoutes: Routes = [
         loadChildren: './starter/starter.module#StarterModule'
       },
       {
-        path: 'profile',
+        path:'Job-details/:id',
+        component:DetailJobComponent
+      },
+
+      {
+        path: 'profile/:id',
         loadChildren: './user-management/user.module#UserModule'
+      },
+      {
+        path: '',
+        loadChildren: './Admin/admin.module#AdminModule'
       }
     ]
   },

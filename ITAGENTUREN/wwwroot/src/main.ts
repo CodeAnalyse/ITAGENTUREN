@@ -4,6 +4,12 @@ import 'hammerjs';
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 
+
+import { FormsModule } from '@angular/forms';
+import { Ng2SearchPipe } from 'ng2-search-filter';
+import {FilterPipe} from './app/filter.pipe';
+
+
 if (environment.production) {
   enableProdMode();
 }

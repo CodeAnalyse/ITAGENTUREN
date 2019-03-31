@@ -24,6 +24,9 @@ import { SharedModule } from './shared/shared.module';
 import { SpinnerComponent } from './shared/spinner.component';
 
 import { UserService } from './services/user.services';
+import { FilterPipe } from './filter.pipe';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { DetailJobComponent } from './detail-job/detail-job.component';
 
 @NgModule({
   declarations: [
@@ -33,13 +36,16 @@ import { UserService } from './services/user.services';
     AppHeaderComponent,
     SpinnerComponent,
     AppSidebarComponent,
-    AppLoginHeaderComponent
+    AppLoginHeaderComponent,
+    FilterPipe,
+    DetailJobComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     DemoMaterialModule,
     FormsModule,
+    Ng2SearchPipeModule,
     FlexLayoutModule,
     HttpClientModule,
     SharedModule,

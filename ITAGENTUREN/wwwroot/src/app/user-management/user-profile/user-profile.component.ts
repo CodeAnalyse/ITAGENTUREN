@@ -26,7 +26,11 @@ export class UserProfileComponent implements OnInit {
   isExporting = false;
   isReadOnly = false;
 
-  constructor(private userService: UserService, private _formBuilder: FormBuilder, public snackBar: MatSnackBar, public dialog: MatDialog, private route: ActivatedRoute) {
+  constructor(private userService: UserService,
+    private _formBuilder: FormBuilder,
+    public snackBar: MatSnackBar,
+    public dialog: MatDialog, 
+    private route: ActivatedRoute) {
     
     this.options = [
       {name:'C', value:'C', checked:false, experience: '0-1'},
@@ -66,7 +70,6 @@ export class UserProfileComponent implements OnInit {
               "dob": this.user.dob
             }
             
-            console.log(usr);
             this.setExpirence();
             this.signupForm.setValue(usr);
            });
@@ -142,7 +145,6 @@ export class UserProfileComponent implements OnInit {
   }
 
   remove(val){
-    console.log(val);
     for(var i = 0; i < this.options.length; i++){
       if(this.options[i].value == val){
         this.options[i].checked = false;

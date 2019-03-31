@@ -14,15 +14,75 @@
                             <img class="homePageImage" src="assets/images/adult-beard-blur-842567.jpg" alt="John" style="width:100%; background-size: cover; -o-background-size: cover; -moz-background-size: cover; -webkit-background-size: cover;">
                             <h1 class="banner-heading" style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%)">MEET YOUR FUTURE TODAY</h1>
                         </div>
-                        <div class="searchbox">
-                            <input type="text" placeholder="Search role(for e.g Java developer)" />
-                            <button>go</button>
-                        </div>
+                        
                     </div>
                 </div>      
             </mat-card-content>
         </mat-card>
-        <p class="center-text">Connecting carrier driver IT-people to recruiters</p>
     </div>
-    <!-- column -->    
-</div>
+  </div>
+
+  
+    <div class="searchbox">
+      <!-- <input class="form-control" type="text" (ngModel)="searchText" name="searchText" name="$event.target.value" [(ngModel)]="term" placeholder="Search role(for e.g Java developer)" [ngModelOptions]="{standalone: true}"/> -->
+      <div class="input-group">
+          <input class="form-control" name="term" [(ngModel)]="term" type="text" placeholder="Search role(for e.g Java developer)"  />
+          <button (click)="searchbykey()">go</button>
+      </div>
+      
+      <table *ngIf="JobNames" class="table table-striped">
+        <thead style="background-color: white;color: black;">
+        <tr>
+          <th>Id</th>
+          <th>Job Title</th>
+          <th>Job Description</th>
+          <th>Company Name</th>
+        </tr>
+        </thead>
+        <tbody style="background-color: white;color: black;">
+        <!--<tr *ngFor="let partjob of JobName  | filter:term"> -->
+           <tr *ngFor="let partjob of JobNames | filter:term">
+          <td>{{partjob.id}}</td>
+          <td>{{partjob.Job_Title}}</td>
+          <td>{{partjob.Job_Description}}</td>
+          <td><a [routerLink]="['/Job-details',partjob.id]"  >{{partjob.Company_Name}}</a></td>
+
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+  
+<!-- <Error section started from here>
+<div class="searchbox">
+    <input class="form-control" type="text" name="searchText" [(ngModel)]="searchText" placeholder="Search role(for e.g Java developer)" />
+    <button (click)="getjob()">go</button>
+-->
+    
+    
+
+        <p class="center-text">Connecting carrier driver IT-people to recruiters</p>
+         <!-- <button>Search all jobs</button> -->
+         <button (click)="getAlljobs()">Search all jobs</button>
+         <table *ngIf="Jobs" class="table table-striped" border="1" cellspacing="0" cellpadding="0">
+             <thead>
+                     <tr>
+                             <th>Id</th>
+                             <th>Job Title</th>
+                             <th>Job Description</th>
+                             <th>Company Name</th>
+                           </tr>
+             </thead>
+   
+             <tbody>
+             <tr *ngFor="let job of Jobs">
+               <td>{{job.id}}</td>
+               <td>{{job.Job_Title}}</td>
+               <td>{{job.Job_Description}}</td>
+               <td><a [routerLink]="['/Job-details',job.id]"  >{{job.Company_Name}}</a></td>
+             </tr>
+             </tbody>
+           </table>
+           
+     <!-- column -->  
+ 

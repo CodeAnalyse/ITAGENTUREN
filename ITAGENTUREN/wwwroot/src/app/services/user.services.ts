@@ -5,12 +5,13 @@ import { catchError, map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { User } from '../model/user.mode';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class UserService {
   isSessionVaild = true;
 
-  constructor(private http: Http, public router: Router,
+  constructor(private http: Http, public router: Router, private httpService: HttpClient,
     protected localStorage: LocalStorage) {  }
 
   getHeaders(){
@@ -91,4 +92,23 @@ export class UserService {
     headers.append('Access-Control-Allow-Origin', '*');
     return this.http.get(environment.apiUrl + 'Users/GetUsers', { headers: headers });
   }
+
+  SearchJobs()
+  {
+    //alert("I am in service");
+    return this.httpService.get('../../assets/SearchAllJobs.json');
+  }
+
+  SearchbyName()
+{
+  alert("I am in service");
+  return this.httpService.get('../../assets/SearchAllJobs.json');
+}
+
+particularJobs()
+{
+  alert("I am in service");
+  return this.httpService.get('../../assets/SearchAllJobs.json');
+}
+
 }
